@@ -1,12 +1,15 @@
+var logger = require('morgan');
 var express = require('express');
+var port = process.env.PORT || 4000;
+
+//express instantiation
 var app = express();
 
+//middleware
+app.use(logger('dev'));
 app.use(express.static('public'));
 
-app.get('/', function(req, res){
-    res.send('workining');
-});
-
-app.listen(4000, function(){
-    console.log("app listening on port 4000");
+//listen for connection on port
+app.listen(port, function(){
+  console.log(`app listening on port ${port}`);
 });
