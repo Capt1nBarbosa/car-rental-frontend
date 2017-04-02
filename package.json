@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/acpbm/car-rental-frontend#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "morgan": "^1.8.1"
   }
 }
