@@ -1,3 +1,3 @@
-function HomeController() {
+function HomeController($http) {
 
 }
