@@ -1,7 +1,6 @@
-angular.module('reserve-a-car', ['ui.router'])
-  .config(RentACarRouter);
+router.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function RentACarRouter($stateProvider, $urlRouterProvider){
+function router($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise('/');
 
@@ -9,5 +8,10 @@ function RentACarRouter($stateProvider, $urlRouterProvider){
  .state('home', {
    url: '/',
    templateUrl: '/partials/home.html'
+ })
+ .state('browse', {
+   url: '/',
+   templateUrl: '/partials/browse.html',
+   controller: 'VehicleController as vehicle'
  });
 }
