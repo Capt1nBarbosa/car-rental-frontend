@@ -1,19 +1,86 @@
-<div class="container">
+<div class="">
   <div class="row">
-    <div class="card col s4" ng-repeat="v in vehicle.resultVehicles">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" ng-src="{{v.img}}" alt="v.model">
+    <!-- left navigation panel -->
+    <div class="col s12 m4 l3">
+      <ul>
+        <li>
+          <div class="card">
+            <div class="card-content">
+              <h5>vehicle type</h5>
+              <form action="#">
+                <p>
+                  <input name="group1" type="radio" id="test1" />
+                  <label for="test1">Economy</label>
+                </p>
+                <p>
+                  <input name="group1" type="radio" id="test2" />
+                  <label for="test2">Compact</label>
+                </p>
+                <p>
+                  <input name="group1" type="radio" id="test3"  />
+                  <label for="test3">Midsize</label>
+                </p>
+                <p>
+                  <input name="group1" type="radio" id="test4"/>
+                  <label for="test4">Standard</label>
+                </p>
+                <p>
+                  <input name="group1" type="radio" id="test4"/>
+                  <label for="test4">SUV</label>
+                </p>
+                <p>
+                  <input name="group1" type="radio" id="test4"/>
+                  <label for="test4">Minivan</label>
+                </p>
+              </form>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <div class="card-content">
+              <h5>price</h5>
+              <form action="#">
+               <p>
+                 <input name="group1" type="radio" id="test1" />
+                 <label for="test1">Highest to lowest</label>
+               </p>
+               <p>
+                 <input name="group1" type="radio" id="test2" />
+                 <label for="test2">Lowest to highest</label>
+               </p>
+              </form>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- main content  -->
+    <div class="col s12 m8 l9">
+      <div class="card">
+        <form>
+         <div class="input-field">
+           <input id="search" type="search" ng-model="searchBar" required>
+           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+           <!-- <i class="material-icons">close</i> -->
+         </div>
+       </form>
       </div>
-      <div class="card-content">
-        <span class="card-title">{{v.model}}</span>
-        <p>{{v.carType}}</p>
-        <p>Capacity: {{v.capacity}}</p>
-        <p>Rate: {{v.rate | currency}}</p>
-        <!-- <p><a href="#">link if needed</a></p> -->
-      </div>
-      <div class="card-reveal">
-        <span class="card-title">Title<i class="material-icons right">close</i></span>
-        <p>other info</p>
+      <div class="card col s4" ng-repeat="v in vehicle.resultVehicles | filter: searchBar">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" ng-src="{{v.img}}" alt="v.model">
+        </div>
+        <div class="card-content">
+          <span class="card-title">{{v.model}}</span>
+          <p>{{v.vehicleType}}</p>
+          <p>Capacity: {{v.capacity}}</p>
+          <p>Rate: {{v.rate | currency}}</p>
+          <!-- <p><a href="#">link if needed</a></p> -->
+        </div>
+        <div class="card-reveal">
+          <span class="card-title">Title<i class="material-icons right">close</i></span>
+          <p>other info</p>
+        </div>
       </div>
     </div>
   </div>
