@@ -7,10 +7,11 @@ function router($stateProvider, $urlRouterProvider){
  $stateProvider
  .state('home', {
    url: '/',
-   templateUrl: '/partials/home.html'
+   templateUrl: '/partials/home.html',
+   controller: 'HomeController as home'
  })
  .state('browse', {
-   url: '/',
+   url: '/browse/vehicles/:location',
    templateUrl: '/partials/browse.html',
    controller: 'VehicleController as vehicle'
  });
