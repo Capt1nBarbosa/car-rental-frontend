@@ -12,16 +12,18 @@
     <!-- custom CSS -->
     <link rel="stylesheet" href="/css/custom.css">
   </head>
-  <body>
+  <body ng-controller="MainController as main">
     <header>
-      <nav>
+      <nav ng-controller="AuthController as auth">
         <div class="nav-wrapper teal lighten-2">
-          <a href="#" class="brand-logo">
+          <a ui-sref="home" class="brand-logo">
             <i class="fa fa-car" aria-hidden="true"></i>
             Reserve-A-Car</a>
           <ul id="nav-mobile" class="right">
-            <li><a href="#">login</a></li>
-            <li><a href="#">logout</a></li>
+            <li><a ng-if="!main.currentUser" ui-sref="signup">signup</a></li>
+            <li><a ng-if="!main.currentUser" ui-sref="login">login</a></li>
+            <li ng-if="main.currentUser">Welcome {{main.currentUser.name}} </li>
+            <li><a ng-if="main.currentUser" ng-click="auth.logout()">logout</a></li>
           </ul>
         </div>
       </nav>
@@ -33,7 +35,7 @@
           <div class="row">
             <div class="progress-bar col s3">
               <div id="location" class="progress-bar-content col s9">
-                <h5>1 Location</h5>
+                <h6>1 Location</h6>
               </div>
               <div class="col  s9">
                 <p>{{vehicle.location}}</p>
@@ -41,7 +43,7 @@
             </div>
             <div class="progress-bar col s3">
               <div id="select-vehicle" class="progress-bar-content col s9">
-                <h5>2 Select a vehicle</h5>
+                <h6>2 Select a vehicle</h6>
               </div>
               <div class="col  s9">
                 <p>vehicle</p>
@@ -49,7 +51,7 @@
             </div>
             <div class="progress-bar col s3">
               <div id="info" class="progress-bar-content col s9">
-                <h5>3 Your information</h5>
+                <h6>3 Your information</h6>
               </div>
               <div class="col  s9">
                 <p>your info</p>
@@ -57,7 +59,7 @@
             </div>
             <div class="progress-bar col s3">
               <div id="reserve" class="progress-bar-content col s9">
-                 <h5>4 Reserve</h5>
+                 <h6>4 Reserve</h6>
               </div>
               <div class="col  s9">
                 <p>reserved</p>
@@ -89,15 +91,19 @@
     <script src="/scripts/materialize.js"></script>
     <!-- fontawesome -->
     <script src="https://use.fontawesome.com/c8038f8366.js"></script>
-    <!-- ROUTER -->
+    <!-- config -->
+    <script src="/scripts/authConfig.js"></script>
+    <!-- router -->
     <script src="/scripts/router.js"></script>
-    <!-- CONTROLLERS -->
+    <!-- controllers -->
     <script src="/scripts/controllers/authController.js"></script>
-    <script src="/scripts/controllers/homeController.js"></script>
+    <script src="/scripts/controllers/mainController.js"></script>
     <script src="/scripts/controllers/vehicleController.js"></script>
-    <!-- SERVICES -->
+    <!-- services -->
+    <script src="/scripts/services/authInterceptorService.js"></script>
+    <script src="/scripts/services/authTokenService.js"></script>
     <script src="/scripts/services/vehicleService.js"></script>
-    <!-- APP -->
+    <!-- app -->
     <script src="/scripts/app.js"></script>
   </body>
 </html>
