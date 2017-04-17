@@ -15,18 +15,57 @@
   <body>
     <header>
       <nav>
-        <div class="nav-wrapper blue-grey">
-          <a href="#" class="brand-logo">Reserve-A-Car</a>
+        <div class="nav-wrapper teal lighten-2">
+          <a href="#" class="brand-logo">
+            <i class="fa fa-car" aria-hidden="true"></i>
+            Reserve-A-Car</a>
           <ul id="nav-mobile" class="right">
-            <li><a ng-click=""><i class="material-icons">search</i></a></li>
-            <!-- <li><a href="#">login</a></li>
-            <li><a href="#">logout</a></li> -->
+            <li><a href="#">login</a></li>
+            <li><a href="#">logout</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
     <main>
+      <nav ng-controller="VehicleController as vehicle" class="nav-extended">
+        <div class="nav-wrapper blue-grey lighten-3">
+          <div class="row">
+            <div class="progress-bar col s3">
+              <div id="location" class="progress-bar-content col s9">
+                <h5>1 Location</h5>
+              </div>
+              <div class="col  s9">
+                <p>{{vehicle.location}}</p>
+              </div>
+            </div>
+            <div class="progress-bar col s3">
+              <div id="select-vehicle" class="progress-bar-content col s9">
+                <h5>2 Select a vehicle</h5>
+              </div>
+              <div class="col  s9">
+                <p>vehicle</p>
+              </div>
+            </div>
+            <div class="progress-bar col s3">
+              <div id="info" class="progress-bar-content col s9">
+                <h5>3 Your information</h5>
+              </div>
+              <div class="col  s9">
+                <p>your info</p>
+              </div>
+            </div>
+            <div class="progress-bar col s3">
+              <div id="reserve" class="progress-bar-content col s9">
+                 <h5>4 Reserve</h5>
+              </div>
+              <div class="col  s9">
+                <p>reserved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
       <ui-view></ui-view>
     </main>
 
@@ -36,6 +75,8 @@
 
     <!-- angular CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <!-- ngStorage -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <!-- ui-router CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <!-- jquery -->
@@ -51,7 +92,8 @@
     <!-- ROUTER -->
     <script src="/scripts/router.js"></script>
     <!-- CONTROLLERS -->
-    <script src="/scripts/controllers/auth.js"></script>
+    <script src="/scripts/controllers/authController.js"></script>
+    <script src="/scripts/controllers/homeController.js"></script>
     <script src="/scripts/controllers/vehicleController.js"></script>
     <!-- SERVICES -->
     <script src="/scripts/services/vehicleService.js"></script>
