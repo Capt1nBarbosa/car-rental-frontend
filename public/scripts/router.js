@@ -7,12 +7,21 @@ function router($stateProvider, $urlRouterProvider){
  $stateProvider
  .state('home', {
    url: '/',
-   templateUrl: '/partials/home.html',
-   controller: 'HomeController as home'
+   templateUrl: '/partials/home.html'
  })
  .state('browse', {
-   url: '/browse/vehicles/:location',
+   url: '/browse/vehicles/:searchByLocation',
    templateUrl: '/partials/browse.html',
    controller: 'VehicleController as vehicle'
+ })
+ .state('signup', {
+   url: '/signup',
+   templateUrl: '/partials/signup.html',
+   controller: 'AuthController as auth'
+ })
+ .state('login', {
+   url: '/login',
+   templateUrl: '/partials/login.html',
+   controller: 'AuthController as auth'
  });
 }
