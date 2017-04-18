@@ -31,7 +31,18 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, authTo
         if($localStorage.reservationStarted){
           $state.go('reserve');
         }else{
-          $state.go('home');
+          // NOTE: make this into reusable method to clean up code
+          // location.reload();
+          Materialize.updateTextFields();
+          Materialize.updateTextFields();
+          $('select').material_select();
+          $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            format: 'mm-dd-yyyy', //date format
+            min: new Date(), //prevent being able to select a past date
+          });
+          $state.go('home',{}, {reload: true});
         }
     });
   }
@@ -42,14 +53,16 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, authTo
     $localStorage.$reset();
     $scope.$emit('userLoggedOut');
 
-    // NOTE: make this into reusable method to clean up code
+    location.reload();
+    Materialize.updateTextFields();
+    $('select').material_select();
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15, // Creates a dropdown of 15 years to control year
       format: 'mm-dd-yyyy', //date format
       min: new Date(), //prevent being able to select a past date
     });
-    $state.go('home');
+    $state.go('home',{}, {reload: true});
   }
 
 }
