@@ -7,7 +7,7 @@
         <form class="col s12" id="search-form" ng-submit="main.search()" >
           <div class="row">
             <div class="input-field col s12">
-              <select id="location-value">
+              <select id="location-value" required>
                 <option value="" disabled selected>Select a pick-up locaton</option>
                 <option value="Weston">Weston</option>
                 <option value="Boca Raton">Boca Raton</option>
@@ -17,6 +17,16 @@
                 <option value="Sunrise">Sunrise</option>
               </select>
               <label for="location">Location</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+               <input class="datepicker" type="date" id="pick-up-date">
+               <label for="pick-up-date">Pick Up Date</label>
+               </div>
+            <div class="input-field col s6">
+              <input class="datepicker" type="date" id="return-date">
+              <label for="return-date">Return Date</label>
             </div>
           </div>
           <div class="row">
