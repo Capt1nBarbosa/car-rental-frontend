@@ -72,19 +72,21 @@
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">{{v.vehicleType}}<i class="material-icons right">more_vert</i></span>
+          <p><b>{{v.manufacturer}} {{v.model}}</b></p>
           <p>Rate: {{v.rate | currency}}</p>
         </div>
         <div class="card-reveal">
-          <span class="card-title">Vehicle Information<i class="material-icons right">close</i></span>
+          <span class="card-title">{{v.manufacturer}} {{v.model}}<i class="material-icons right">close</i></span>
           <br>
           <div class="">
-            <p><b>{{v.model}}</b></p>
-            <p>{{v.manufacturer}}</p>
+            <p><b>{{v.vehicleType}}</b></p>
+            <p>{{main.vehicle.year}}</p>
+            <p>{{main.vehicle.transmission}}</p>
             <p>Capacity: {{v.capacity}}</p>
           </div>
           <br>
           <div class="input-field">
-            <input type="button" value="start reservation">
+            <input ng-click="main.isLoggedIn(v)" type="button" value="start reservation">
           </div>
         </div>
       </div>
