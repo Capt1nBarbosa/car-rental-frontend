@@ -33,3 +33,5 @@ angular.module('reserve-a-car', ['ui.router', 'ngStorage'])
 // NOTE: add better error handler for promises
 
 // NOTE: look for random reservation number generator, if not use ruby faker gem
+
+// NOTE: hide secret in .env file, backend
