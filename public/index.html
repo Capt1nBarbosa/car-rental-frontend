@@ -30,7 +30,7 @@
     </header>
 
     <main>
-      <nav ng-controller="VehicleController as vehicle" class="nav-extended">
+      <nav class="nav-extended">
         <div class="nav-wrapper blue-grey lighten-3">
           <div class="row">
             <div class="progress-bar col s3">
@@ -38,7 +38,7 @@
                 <h6>1 Location</h6>
               </div>
               <div class="col  s9">
-                <p>{{vehicle.location}}</p>
+                <p>{{main.location}}</p>
               </div>
             </div>
             <div class="progress-bar col s3">
@@ -98,6 +98,7 @@
     <!-- controllers -->
     <script src="/scripts/controllers/authController.js"></script>
     <script src="/scripts/controllers/mainController.js"></script>
+    <script src="/scripts/controllers/reservationController.js"></script>
     <script src="/scripts/controllers/vehicleController.js"></script>
     <!-- services -->
     <script src="/scripts/services/authInterceptorService.js"></script>
