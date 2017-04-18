@@ -8,7 +8,8 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, authTo
   vm.signup = signup;
   vm.login = login;
   vm.logout = logout;
-  var server = 'http://localhost:3000';
+  // var server = 'http://localhost:3000';
+  var server = 'https://cryptic-basin-62047.herokuapp.com';
 
   function signup(newUser) {
     console.log('hit signup method');
