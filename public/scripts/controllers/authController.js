@@ -1,8 +1,8 @@
 //credits: auth lesson by General Assembly
 //https://generalassemb.ly/education/web-development-immersive-remote
 
-AuthController.$inject = ['$http', '$state', '$scope', '$rootScope', 'authTokenService'];
-function AuthController($http, $state, $scope, $rootScope, authTokenService) {
+AuthController.$inject = ['$http', '$state', '$scope', '$rootScope', '$localStorage', 'authTokenService'];
+function AuthController($http, $state, $scope, $rootScope, $localStorage, authTokenService) {
   var vm = this;
 
   vm.signup = signup;
@@ -27,15 +27,28 @@ function AuthController($http, $state, $scope, $rootScope, authTokenService) {
         authTokenService.setToken(response.data.token);
         $scope.$emit('userLoggedIn', response.data.user);
         $rootScope.$emit('fetchData', response.data.user);
-        $state.go('home', {reload: true});
+        if($localStorage.reservationStarted){
+          $state.go('reserve');
+        }else{
+          $state.go('home');
+        }
     });
   }
 
   function logout() {
     console.log('hit logout method');
     authTokenService.setToken();
+    $localStorage.$reset();
     $scope.$emit('userLoggedOut');
-    $state.go('home', {reload: true});
+
+    // NOTE: make this into reusable method to clean up code
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year
+      format: 'mm-dd-yyyy', //date format
+      min: new Date(), //prevent being able to select a past date
+    });
+    $state.go('home');
   }
 
 }
