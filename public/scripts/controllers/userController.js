@@ -11,7 +11,7 @@ function UserController(){
   vm.licence = '';
 
   function add(user){
-
+    // NOTE: currently being handled by authController, change later
   }
 
   function remove(){}
