@@ -1,6 +1,6 @@
 VehicleController.$inject = ['vehicleService', '$state', '$scope', '$localStorage'];
 
-function VehicleController(vehicleService, $state, $localStorage){
+function VehicleController(vehicleService, $state, $scope, $localStorage){
   //capture variable to avoid problems with context of 'this' in functons within the controller functon.
   var vm = this;
 
@@ -12,6 +12,17 @@ function VehicleController(vehicleService, $state, $localStorage){
 
   browse();
 
+  function add(){}
+
+  function browse(){
+    console.log($localStorage);
+    vm.location = $localStorage.location;
+    vm.resultVehicles = $localStorage.resultVehicles;
+    console.log(vm.resultVehicles);
+  }
+
+  function checkAvailability(){}
+
   function getAllVehicles(){
     vehicleService.getAllVehicles()
       .then(function(response){
@@ -19,8 +30,8 @@ function VehicleController(vehicleService, $state, $localStorage){
       });
   }
 
-  function browse(){
-    vm.location = $localStorage.location;
-    vm.resultVehicles = $localStorage.resultVehicles;
-  }
+  function edit(){}
+  function remove(){}
+  function reserve(){}
+
 }
