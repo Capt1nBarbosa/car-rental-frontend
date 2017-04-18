@@ -14,14 +14,27 @@ function router($stateProvider, $urlRouterProvider){
    templateUrl: '/partials/browse.html',
    controller: 'VehicleController as vehicle'
  })
- .state('signup', {
-   url: '/signup',
-   templateUrl: '/partials/signup.html',
-   controller: 'AuthController as auth'
- })
  .state('login', {
    url: '/login',
    templateUrl: '/partials/login.html',
+   controller: 'AuthController as auth'
+ })
+ .state('reserve', {
+   url: '/reservation/review-and-reserve',
+   templateUrl: '/partials/reserve.html',
+   controller: "ReservationController as reservation"
+ })
+ .state('settings', {
+   url: '/user/account/settings',
+   templateUrl: '/partials/userSettings.html'
+ })
+ .state('complete', {
+   url: '/reservation/complete',
+   templateUrl: '/partials/confirmation.html'
+ })
+ .state('signup', {
+   url: '/signup',
+   templateUrl: '/partials/signup.html',
    controller: 'AuthController as auth'
  });
 }
