@@ -6,4 +6,5 @@ angular.module('reserve-a-car', ['ui.router', 'ngStorage'])
   .factory('vehicleService', vehicleService)
   .controller('AuthController', AuthController)
   .controller('VehicleController', VehicleController)
+  .controller('ReservationController', ReservationController)
   .controller('MainController', MainController);
