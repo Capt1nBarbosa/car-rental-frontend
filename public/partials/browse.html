@@ -5,32 +5,32 @@
       <ul>
         <li>
           <div class="card">
-            <div class="card-content">
+            <div class="card-content input-field">
               <h5>vehicle type</h5>
               <form action="#">
                 <p>
-                  <input name="group1" type="radio" id="test1" />
-                  <label for="test1">Economy</label>
+                  <input name="vehicleType" type="checkbox" id="economy" ng-model="typeOrder.economy" ng-true-value="'economy'" ng-false-value="''" />
+                  <label for="economy">Economy</label>
                 </p>
                 <p>
-                  <input name="group1" type="radio" id="test2" />
-                  <label for="test2">Compact</label>
+                  <input name="vehicleType" type="checkbox" id="compact" ng-model="typeOrder.compact" ng-true-value="'compact'" ng-false-value="''" />
+                  <label for="compact">Compact</label>
                 </p>
                 <p>
-                  <input name="group1" type="radio" id="test3"  />
-                  <label for="test3">Midsize</label>
+                  <input name="vehicleType" type="checkbox" id="midsize" ng-model="typeOrder.midsize" ng-true-value="'midsize'" ng-false-value="''" />
+                  <label for="midsize">Midsize</label>
                 </p>
                 <p>
-                  <input name="group1" type="radio" id="test4"/>
-                  <label for="test4">Standard</label>
+                  <input name="vehicleType" type="checkbox" id="standard" ng-model="typeOrder.standard" ng-true-value="'standard'" ng-false-value="''" />
+                  <label for="standard">Standard</label>
                 </p>
                 <p>
-                  <input name="group1" type="radio" id="test4"/>
-                  <label for="test4">SUV</label>
+                  <input name="vehicleType" type="checkbox" id="suv" ng-model="typeOrder.suv" ng-true-value="'suv'" ng-false-value="''"/>
+                  <label for="suv">SUV</label>
                 </p>
                 <p>
-                  <input name="group1" type="radio" id="test4"/>
-                  <label for="test4">Minivan</label>
+                  <input name="vehicleType" type="checkbox" id="minivan" ng-model="typeOrder.minivan" ng-true-value="'Mini van'" ng-false-value="''" />
+                  <label for="minivan">Minivan</label>
                 </p>
               </form>
             </div>
@@ -38,16 +38,16 @@
         </li>
         <li>
           <div class="card">
-            <div class="card-content">
+            <div class="card-content input-field">
               <h5>price</h5>
-              <form action="#">
+              <form>
                <p>
-                 <input name="group1" type="radio" id="test1" />
-                 <label for="test1">Highest to lowest</label>
+                 <input name="price" id="highest-price" type="checkbox" ng-model="priceOrder.high" ng-true-value="'-rate'" ng-false-value="''" />
+                 <label for="highest-price">Highest to lowest</label>
                </p>
                <p>
-                 <input name="group1" type="radio" id="test2" />
-                 <label for="test2">Lowest to highest</label>
+                 <input id="lowest-price" name="price" type="checkbox" ng-model="priceOrder.low" ng-true-value="'rate'" ng-false-value="''" />
+                 <label for="lowest-price">Lowest to highest</label>
                </p>
               </form>
             </div>
@@ -66,20 +66,26 @@
          </div>
        </form>
       </div>
-      <div class="card col s4" ng-repeat="v in vehicle.resultVehicles | filter: searchBar">
+      <div class="card col s4" ng-repeat="v in vehicle.resultVehicles | filter: searchBar | filter: typeOrder.economy | filter: typeOrder.compact | filter: typeOrder.midsize  | filter: typeOrder.standard | filter: typeOrder.suv | filter: typeOrder.minivan |  orderBy: priceOrder.low | orderBy: priceOrder.high">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" ng-src="{{v.img}}" alt="v.model">
+          <img class="activator" ng-src="{{v.img}}" alt="{{v.model}}">
         </div>
         <div class="card-content">
-          <span class="card-title">{{v.model}}</span>
-          <p>{{v.vehicleType}}</p>
-          <p>Capacity: {{v.capacity}}</p>
+          <span class="card-title activator grey-text text-darken-4">{{v.vehicleType}}<i class="material-icons right">more_vert</i></span>
           <p>Rate: {{v.rate | currency}}</p>
-          <!-- <p><a href="#">link if needed</a></p> -->
         </div>
         <div class="card-reveal">
-          <span class="card-title">Title<i class="material-icons right">close</i></span>
-          <p>other info</p>
+          <span class="card-title">Vehicle Information<i class="material-icons right">close</i></span>
+          <br>
+          <div class="">
+            <p><b>{{v.model}}</b></p>
+            <p>{{v.manufacturer}}</p>
+            <p>Capacity: {{v.capacity}}</p>
+          </div>
+          <br>
+          <div class="input-field">
+            <input type="button" value="start reservation">
+          </div>
         </div>
       </div>
     </div>
