@@ -4,7 +4,7 @@ function MainController($scope, $state, $localStorage, vehicleService){
 
   var vm = this;
   vm.search = search;
-  getLocation();
+  vm.location = '';
 
   $scope.$on('userLoggedIn', function(event, data){
     //add user info to localStorage
@@ -27,13 +27,18 @@ function MainController($scope, $state, $localStorage, vehicleService){
   function getLocation(){
     $localStorage.location =
     $("#location-value").val();
+
+    vm.location = $localStorage.location;
   }
 
   function search(){
+    getLocation();
     vehicleService.search($localStorage.location)
       .then(function(response){
+        console.log(response);
         $localStorage.resultVehicles = response.data;
-        $state.go('browse', {searchByLocation: $localStorage.location});
+        console.log($localStorage.resultVehicles);
+        $state.go('browse', {searchByLocation: $localStorage.location}, {reload: true});
       });
   }
 }
