@@ -9,7 +9,21 @@ angular.module('velocity-nexus', ['ui.router', 'ngStorage'])
   .controller('VehicleController', VehicleController)
   .controller('ReservationController', ReservationController)
   .controller('UserController', UserController)
-  .controller('MainController', MainController);
+  .controller('MainController', MainController)
+  .run(function($rootScope){
+    $rootScope.$on('$stateChangeSuccess', function(){
+      $('select').material_select();
+
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year
+        format: 'mm-dd-yyyy', //date format
+        min: new Date(), //prevent being able to select a past date
+      });
+
+      $(".dropdown-button").dropdown();
+    })
+  });
 
 // NOTE: if times allows refactor all services and controller into ES6 classes
 
