@@ -1,7 +1,80 @@
 <div class="row">
-  <div class="card col s12">
-    <div class="card-content">
-      <h4>here goes user account stuff</h4>
+  <div class="card col s12 z-depth-0">
+    <div class="row card-content">
+      <div id="account-nav" class="section col s12">
+        <h5>Manage Account</h5>
+        <div class="divider"></div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="section col s6">
+          <br>
+          <h6><b>Profile</b></h6>
+          <p>Your email is your username and is used to login</p>
+        </div>
+        <div class="row section col s6">
+          <ul class="col s6">
+            <br>
+            <li><b>Name</b></li>
+            <br>
+            <li>
+              <div class="">
+                <p>{{main.currentUser.name}}<i class="fa fa-pencil" aria-hidden="true"></i></p>
+              </div>
+            </li>
+            <br>
+            <li><b>Email Address</b></li>
+            <br>
+            <li>
+              <div class="">
+                <p>{{main.currentUser.email}}<i class="fa fa-pencil" aria-hidden="true"></i></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="section col s6">
+          <br>
+          <h6><b>Password</b></h6>
+        </div>
+        <div class="row section col s6">
+          <br>
+          <ul class="col s6">
+            <li><b>Current Password</b></li>
+            <br>
+            <li>
+              <input type="text" name="" placeholder="enter your current password">
+            </li>
+            <br>
+            <li><b>New Password</b></li>
+            <br>
+            <li>
+              <input type="text" name="" placeholder="enter a new password">
+            </li>
+            <li>
+              <input type="text" name="" placeholder="enter the password">
+            </li>
+            <br>
+            <li>
+              <a class="waves-effect waves-light btn z-depth-0">Update Password</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row">
+        <br>
+        <div class="section col s6">
+          <br>
+          <h6><b>Close Account</b></h6>
+        </div>
+        <div class="section col s6">
+          <br>
+          <a class="waves-effect waves-light btn  red darken-2 z-depth-0">Close Account</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
