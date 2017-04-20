@@ -5,16 +5,23 @@ function MainController($scope, $state, $localStorage, vehicleService){
   // NOTE: refactor this controller into smaller services to clean up and make more readable
 
   var vm = this;
+  //data
   vm.currentUser = null;
-  vm.isLoggedIn = isLoggedIn;
+  vm.daysTotal = '';
+  vm.dropOff = '';
   vm.location = '';
+  vm.pickUp = '';
   vm.reservationStarted = false;
   vm.reservationComplete = false;
-  vm.search = search;
-  vm.pickUp = '';
-  vm.dropOff = '';
-  vm.daysTotal = '';
+  vm.showAccountNav = false;
+  vm.showProgressNav = true;
   vm.vehicle = {};
+  //methods
+  vm.displayNav = displayNav;
+  vm.isLoggedIn = isLoggedIn;
+  vm.search = search;
+
+  loadData()
 
   $scope.$on('userLoggedIn', function(event, data){
     //add user info to localStorage
@@ -25,9 +32,9 @@ function MainController($scope, $state, $localStorage, vehicleService){
 
   $scope.$on('userLoggedOut', function(event, data) {
     //remove userinfo from localStorage
-    delete $localStorage.currentUser;
+    $localStorage.$reset();
     //remove user info from controller data
-    vm.currentUser = $localStorage.currentUser;
+    vm.currentUser = null;
   });
 
   function getLocation(){
@@ -66,7 +73,7 @@ function MainController($scope, $state, $localStorage, vehicleService){
       vm.reservationComplete = $localStorage.reservationComplete;
       $state.go('login');
     }else{
-      $state.go('reserve');
+      $state.go('review');
     }
   }
 
@@ -83,5 +90,34 @@ function MainController($scope, $state, $localStorage, vehicleService){
       });
   }
 
+  function displayNav(navName){
+    if (navName === 'account'){
+      $localStorage.showProgressNav = false;
+      vm.showMainNav = $localStorage.showProgressNav;
+      $localStorage.showAccountNav = true;
+      vm.showAccountNav = $localStorage.showAccountNav;
+    }else if (navName == 'main'){
+      $localStorage.showAccountNav = false;
+      vm.showMainNav = $localStorage.showAccountNav;
+      $localStorage.showProgressNav = true;
+      vm.showMainNav = $localStorage.showProgressNav;
+    }else {
+      $localStorage.showProgressNav = false;
+      vm.showMainNav = $localStorage.showProgressNav;
+      $localStorage.showAccountNav = false;
+      vm.showMainNav = $localStorage.showAccountNav;
+      return true;
+    }
+  }
 
+  function loadData(){
+    vm.currentUser = $localStorage.currentUser;
+    vm.daysTotal = $localStorage.location;
+    vm.dropOff = $localStorage.dropOff;
+    vm.location = $localStorage.location;
+    vm.pickUp = $localStorage.pickUp;
+    vm.reservationStarted = $localStorage.reservationStarted;
+    vm.reservationComplete = $localStorage.reservationComplete;
+    vm.vehicle = $localStorage.vehicle;
+  }
 }
