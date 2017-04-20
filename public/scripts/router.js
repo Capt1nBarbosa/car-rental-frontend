@@ -19,17 +19,22 @@ function router($stateProvider, $urlRouterProvider){
    templateUrl: '/partials/login.html',
    controller: 'AuthController as auth'
  })
- .state('reserve', {
-   url: '/reservation/review-and-reserve',
-   templateUrl: '/partials/reserve.html',
+ .state('reservations', {
+   url: '/reservations',
+   templateUrl: '/partials/userReservations.html'
+ })
+ .state('review', {
+   url: '/review',
+   templateUrl: '/partials/review.html',
    controller: "ReservationController as reservation"
  })
- .state('settings', {
-   url: '/user/account/settings',
-   templateUrl: '/partials/userSettings.html'
+ .state('userSettings', {
+   url: '/user/account/user-settings',
+   templateUrl: '/partials/userSettings.html',
+   controller: 'UserController as user'
  })
- .state('complete', {
-   url: '/reservation/complete',
+ .state('confiramtion', {
+   url: '/confiramtion',
    templateUrl: '/partials/confirmation.html'
  })
  .state('signup', {
