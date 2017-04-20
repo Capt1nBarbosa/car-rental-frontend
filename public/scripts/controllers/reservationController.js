@@ -27,7 +27,7 @@ function ReservationController($localStorage, vehicleService, unitService, $scop
         vehicleService.reserve(unit)
           .then(function(response){
             console.log(response);
-            $state.go('complete');
+            $state.go('confiramtion');
           })
           .catch(function(error){
             console.log(error);
