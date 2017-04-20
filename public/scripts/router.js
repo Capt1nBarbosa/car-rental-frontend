@@ -21,16 +21,16 @@ function router($stateProvider, $urlRouterProvider){
  })
  .state('reservations', {
    url: '/reservations',
-   templateUrl: '/partials/userReservations.html'
+   templateUrl: '/partials/reservations.html'
  })
  .state('review', {
    url: '/review',
    templateUrl: '/partials/review.html',
    controller: "ReservationController as reservation"
  })
- .state('userSettings', {
-   url: '/user/account/user-settings',
-   templateUrl: '/partials/userSettings.html',
+ .state('account', {
+   url: '/user/account',
+   templateUrl: '/partials/account.html',
    controller: 'UserController as user'
  })
  .state('confiramtion', {
