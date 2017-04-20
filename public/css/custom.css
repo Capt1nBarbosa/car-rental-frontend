@@ -1,5 +1,6 @@
 body {
   background-color: #eceff1;
+  /*background-color: #DEF2F1;*/
 }
 
 i {
@@ -9,10 +10,6 @@ i {
 img {
   height: 150px;
   width: 250px;
-}
-
-h6 {
-  text-align: center;
 }
 
 p {
@@ -31,4 +28,40 @@ div.progress-bar {
 
 div.progress-bar-content {
   border-bottom: 3px solid white;
+}
+
+ul.dropdown-content li{
+  text-align: center;
+}
+
+i#user-icon {
+  color: #b0bec5;
+}
+
+div#location:hover, div#select-vehicle:hover, div#reserve:hover {
+  border-bottom: 4px dotted #F4E04D;
+}
+
+div#location h6, div#select-vehicle h6, div#reserve h6{
+  text-align: center;
+}
+
+div#main-nav {
+  background-color: #5D737E;
+}
+
+div#progress-nav {
+  background-color: #64B6AC;
+}
+
+#main-nav a:hover {
+  color: #F4E04D;
+}
+
+#account {
+  background-color: #64B6AC;
+}
+
+#account h4 {
+
 }
