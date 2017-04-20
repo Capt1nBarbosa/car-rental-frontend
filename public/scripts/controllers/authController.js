@@ -1,8 +1,8 @@
 //credits: auth lesson by General Assembly
 //https://generalassemb.ly/education/web-development-immersive-remote
 
-AuthController.$inject = ['$http', '$state', '$scope', '$rootScope', '$localStorage', 'authTokenService'];
-function AuthController($http, $state, $scope, $rootScope, $localStorage, authTokenService) {
+AuthController.$inject = ['$http', '$state', '$scope', '$rootScope', '$localStorage', '$window', 'authTokenService'];
+function AuthController($http, $state, $scope, $rootScope, $localStorage, $window, authTokenService) {
   var vm = this;
 
   vm.signup = signup;
@@ -27,9 +27,9 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, authTo
       .then(function(response) {
         authTokenService.setToken(response.data.token);
         $scope.$emit('userLoggedIn', response.data.user);
-        $rootScope.$emit('fetchData', response.data.user);
+        $scope.$emit('fetchData', response.data.user);
         if($localStorage.reservationStarted){
-          $state.go('reserve');
+          $state.go('review');
         }else{
           // NOTE: make this into reusable method to clean up code
           // location.reload();
@@ -42,7 +42,7 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, authTo
             format: 'mm-dd-yyyy', //date format
             min: new Date(), //prevent being able to select a past date
           });
-          $state.go('home',{}, {reload: true});
+          $window.history.back();
         }
     });
   }
@@ -50,10 +50,10 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, authTo
   function logout() {
     console.log('hit logout method');
     authTokenService.setToken();
-    $localStorage.$reset();
+
     $scope.$emit('userLoggedOut');
 
-    location.reload();
+    // location.reload();
     Materialize.updateTextFields();
     $('select').material_select();
     $('.datepicker').pickadate({
