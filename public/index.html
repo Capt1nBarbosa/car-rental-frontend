@@ -20,13 +20,15 @@
           <ul id="nav-mobile" class="right">
             <li><a ng-if="!main.currentUser" ui-sref="signup">signup</a></li>
             <li><a ng-if="!main.currentUser" ui-sref="login">login</a></li>
-            <li><a ng-if="main.currentUser" class="dropdown-button" href="#!" data-activates="dropdown-menu">Welcome {{main.currentUser.name}}<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a ng-if="main.currentUser" ui-sref="account">Account Settings</a></li>
+            <li><a ng-if="main.currentUser" ui-sref="reservations">My Reservations</a></li>
+            <!-- <li><a ng-if="main.currentUser" class="dropdown-button" href="#!" data-activates="dropdown-menu">Welcome {{main.currentUser.name}}<i class="material-icons right">arrow_drop_down</i></a></li> -->
             <li><a ng-if="main.currentUser" ng-click="auth.logout()">logout</a></li>
           </ul>
         </div>
       </nav>
       <!-- dropdown menu -->
-      <ul id="dropdown-menu" class="dropdown-content">
+      <!-- <ul id="dropdown-menu" class="dropdown-content">
         <li>
           <a ui-sref="account">
             <ul>
@@ -39,7 +41,7 @@
         <li class="divider"></li>
         <li><a ui-sref="account">Account settings</a></li>
         <li><a ui-sref="reservations">My reservations</a></li>
-      </ul>
+      </ul> -->
     </header>
 
     <main>
