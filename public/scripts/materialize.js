@@ -9,4 +9,6 @@ $(document).ready(function() {
     format: 'mm-dd-yyyy', //date format
     min: new Date(), //prevent being able to select a past date
   });
+
+  $(".dropdown-button").dropdown();
 });
