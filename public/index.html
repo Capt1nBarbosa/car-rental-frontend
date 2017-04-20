@@ -15,24 +15,39 @@
   <body ng-controller="MainController as main">
     <header>
       <nav ng-controller="AuthController as auth">
-        <div class="nav-wrapper teal lighten-2">
+        <div id="main-nav" class="nav-wrapper">
           <a ui-sref="home" class="brand-logo"><i class="fa fa-car" aria-hidden="true"></i>Velocity Nexus</a>
           <ul id="nav-mobile" class="right">
             <li><a ng-if="!main.currentUser" ui-sref="signup">signup</a></li>
             <li><a ng-if="!main.currentUser" ui-sref="login">login</a></li>
-            <li><a ng-if="main.currentUser" ui-sref="settings"><i class="fa fa-user" aria-hidden="true"></i> Welcome {{main.currentUser.name}}</a></li>
+            <li><a ng-if="main.currentUser" class="dropdown-button" href="#!" data-activates="dropdown-menu">Welcome {{main.currentUser.name}}<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a ng-if="main.currentUser" ng-click="auth.logout()">logout</a></li>
           </ul>
         </div>
       </nav>
+      <!-- dropdown menu -->
+      <ul id="dropdown-menu" class="dropdown-content">
+        <li>
+          <a ui-sref="userSettings">
+            <ul>
+              <li><i id="user-icon" class="fa fa-user-circle fa-3x" aria-hidden="true"></i></li>
+              <li>{{main.currentUser.name}}</li>
+              <li>{{main.currentUser.email}}</li>
+            </ul>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li><a ui-sref="userSettings">Account settings</a></li>
+        <li><a ui-sref="reservations">My reservations</a></li>
+      </ul>
     </header>
 
     <main>
       <nav class="nav-extended">
-        <div class="nav-wrapper blue-grey lighten-3">
+        <div id="progress-nav" class="nav-wrapper">
           <div class="row">
             <div class="progress-bar col s4">
-              <div id="location" class="progress-bar-content col s9">
+              <div ui-sref="home" id="location" class="progress-bar-content col s9">
                 <h6>1 Location</h6>
               </div>
               <div class="col  s9">
@@ -40,7 +55,7 @@
               </div>
             </div>
             <div class="progress-bar col s4">
-              <div id="select-vehicle" class="progress-bar-content col s9">
+              <div ui-sref="browse" id="select-vehicle" class="progress-bar-content col s9">
                 <h6>2 Select a vehicle</h6>
               </div>
               <div class="col  s9">
@@ -48,7 +63,7 @@
               </div>
             </div>
             <div class="progress-bar col s4">
-              <div id="reserve" class="progress-bar-content col s9">
+              <div ui-sref="reserve" id="reserve" class="progress-bar-content col s9">
                  <h6>3 Review and Reserve</h6>
               </div>
               <div class="col  s9">
@@ -58,6 +73,7 @@
           </div>
         </div>
       </nav>
+
       <ui-view></ui-view>
     </main>
 
@@ -90,6 +106,9 @@
     <script src="/scripts/controllers/mainController.js"></script>
     <script src="/scripts/controllers/reservationController.js"></script>
     <script src="/scripts/controllers/vehicleController.js"></script>
+    <script src="/scripts/controllers/unitController.js"></script>
+    <script src="/scripts/controllers/accountController.js"></script>
+    <script src="/scripts/controllers/userController.js"></script>
     <!-- services -->
     <script src="/scripts/services/authInterceptorService.js"></script>
     <script src="/scripts/services/authTokenService.js"></script>
