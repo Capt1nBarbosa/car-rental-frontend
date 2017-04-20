@@ -8,6 +8,7 @@ angular.module('reserve-a-car', ['ui.router', 'ngStorage'])
   .controller('AuthController', AuthController)
   .controller('VehicleController', VehicleController)
   .controller('ReservationController', ReservationController)
+  .controller('UserController', UserController)
   .controller('MainController', MainController);
 
 // NOTE: if times allows refactor all services and controller into ES6 classes
@@ -35,3 +36,5 @@ angular.module('reserve-a-car', ['ui.router', 'ngStorage'])
 // NOTE: look for random reservation number generator, if not use ruby faker gem
 
 // NOTE: hide secret in .env file, backend
+
+// NOTE:
