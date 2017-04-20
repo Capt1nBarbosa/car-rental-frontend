@@ -6,7 +6,8 @@
         <li>
           <div class="card">
             <div class="card-content input-field">
-              <h5>vehicle type</h5>
+              <span class="card-title">Vehicle Type</span>
+              <div class="divider"></div>
               <form action="#">
                 <p>
                   <input name="vehicleType" type="checkbox" id="economy" ng-model="typeOrder.economy" ng-true-value="'economy'" ng-false-value="''" />
@@ -39,7 +40,8 @@
         <li>
           <div class="card">
             <div class="card-content input-field">
-              <h5>price</h5>
+              <span class="card-title">Price</span>
+              <div class="divider"></div>
               <form>
                <p>
                  <input name="price" id="highest-price" type="checkbox" ng-model="priceOrder.high" ng-true-value="'-rate'" ng-false-value="''" />
@@ -66,7 +68,7 @@
          </div>
        </form>
       </div>
-      <div class="card col s4" ng-repeat="v in vehicle.resultVehicles | filter: searchBar | filter: typeOrder.economy | filter: typeOrder.compact | filter: typeOrder.midsize  | filter: typeOrder.standard | filter: typeOrder.suv | filter: typeOrder.minivan |  orderBy: priceOrder.low | orderBy: priceOrder.high">
+      <div class="card col s4 card-color" ng-repeat="v in vehicle.resultVehicles | filter: searchBar | filter: typeOrder.economy | filter: typeOrder.compact | filter: typeOrder.midsize  | filter: typeOrder.standard | filter: typeOrder.suv | filter: typeOrder.minivan |  orderBy: priceOrder.low | orderBy: priceOrder.high">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" ng-src="{{v.img}}" alt="{{v.model}}">
         </div>
@@ -77,12 +79,14 @@
         </div>
         <div class="card-reveal">
           <span class="card-title">{{v.manufacturer}} {{v.model}}<i class="material-icons right">close</i></span>
+          <div class="divider"></div>
           <br>
           <div class="">
             <p><b>{{v.vehicleType}}</b></p>
-            <p>{{main.vehicle.year}}</p>
-            <p>{{main.vehicle.transmission}}</p>
+            <p>{{v.year}}</p>
+            <p>{{v.transmission}}</p>
             <p>Capacity: {{v.capacity}}</p>
+            <p>Rate: {{v.rate | currency}} per day</p>
           </div>
           <br>
           <div class="input-field">
