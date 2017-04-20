@@ -23,6 +23,20 @@ function MainController($scope, $state, $localStorage, vehicleService){
 
   loadData()
 
+
+
+    $('select').material_select();
+
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year
+      format: 'mm-dd-yyyy', //date format
+      min: new Date(), //prevent being able to select a past date
+    });
+
+    $(".dropdown-button").dropdown();
+
+
   $scope.$on('userLoggedIn', function(event, data){
     //add user info to localStorage
     $localStorage.currentUser = data;
