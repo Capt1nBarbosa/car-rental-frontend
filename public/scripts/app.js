@@ -1,4 +1,4 @@
-angular.module('reserve-a-car', ['ui.router', 'ngStorage'])
+angular.module('velocity-nexus', ['ui.router', 'ngStorage'])
   .config(authConfig)
   .config(router)
   .factory('authInterceptor', authInterceptor)
