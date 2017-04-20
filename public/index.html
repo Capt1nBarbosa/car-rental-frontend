@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="reserve-a-car">
+<html ng-app="velocity-nexus">
   <head>
     <meta charset="utf-8">
     <title>car-rental-app</title>
@@ -28,7 +28,7 @@
       <!-- dropdown menu -->
       <ul id="dropdown-menu" class="dropdown-content">
         <li>
-          <a ui-sref="userSettings">
+          <a ui-sref="account">
             <ul>
               <li><i id="user-icon" class="fa fa-user-circle fa-3x" aria-hidden="true"></i></li>
               <li>{{main.currentUser.name}}</li>
@@ -37,7 +37,7 @@
           </a>
         </li>
         <li class="divider"></li>
-        <li><a ui-sref="userSettings">Account settings</a></li>
+        <li><a ui-sref="account">Account settings</a></li>
         <li><a ui-sref="reservations">My reservations</a></li>
       </ul>
     </header>
@@ -63,7 +63,7 @@
               </div>
             </div>
             <div class="progress-bar col s4">
-              <div ui-sref="reserve" id="reserve" class="progress-bar-content col s9">
+              <div ui-sref="review" id="reserve" class="progress-bar-content col s9">
                  <h6>3 Review and Reserve</h6>
               </div>
               <div class="col  s9">
