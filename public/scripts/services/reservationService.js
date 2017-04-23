@@ -1,8 +1,8 @@
 reservationService.$inject = ['$http', '$state', '$localStorage'];
 
 function reservationService($http, $state, $localStorage){
-  var api = 'http://localhost:3000';
-  // var api = 'https://cryptic-basin-62047.herokuapp.com';
+  // var api = 'http://localhost:3000';
+  var api = 'https://cryptic-basin-62047.herokuapp.com';
 
   var service = {
     make: make,

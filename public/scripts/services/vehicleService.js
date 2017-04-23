@@ -1,8 +1,8 @@
 vehicleService.$inject = ['$http', 'unitService', '$localStorage'];
 
 function vehicleService($http, unitService, $localStorage) {
-  var server = 'http://localhost:3000';
-  // var server = 'https://cryptic-basin-62047.herokuapp.com';
+  // var server = 'http://localhost:3000';
+  var server = 'https://cryptic-basin-62047.herokuapp.com';
   return {
     checkAvailability: checkAvailability,
     getAllVehicles: getAllVehicles,

@@ -1,8 +1,8 @@
 unitService.$inject = ['$http', '$state', '$localStorage'];
 
 function unitService($http, $state, $localStorage) {
-  var server = 'http://localhost:3000';
-  // var server = 'https://cryptic-basin-62047.herokuapp.com';
+  // var server = 'http://localhost:3000';
+  var server = 'https://cryptic-basin-62047.herokuapp.com';
   return {
     update: update,
     checkAvailability: checkAvailability

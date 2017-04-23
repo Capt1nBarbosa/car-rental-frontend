@@ -2,8 +2,8 @@ userService.$inject = ['$http', '$localStorage'];
 
 function userService($http, $localStorage){
 
-  var api = 'http://localhost:3000';
-  // var api = 'https://cryptic-basin-62047.herokuapp.com';
+  // var api = 'http://localhost:3000';
+  var api = 'https://cryptic-basin-62047.herokuapp.com';
 
   var service = {
     add: add,
