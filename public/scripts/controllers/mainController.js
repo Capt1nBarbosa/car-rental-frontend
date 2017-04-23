@@ -16,25 +16,53 @@ function MainController($scope, $state, $localStorage, vehicleService){
   vm.showAccountNav = false;
   vm.showProgressNav = true;
   vm.vehicle = {};
+  vm.date = new Date();
+  vm.total = '';
+
   //methods
-  vm.displayNav = displayNav;
   vm.isLoggedIn = isLoggedIn;
   vm.search = search;
+  vm.navBarSelectVehicle = navBarSelectVehicle;  vm.navBarSelectReview = navBarSelectReview;
 
   loadData();
 
-  $scope.$on('userLoggedIn', function(event, data){
-    //add user info to localStorage
-    $localStorage.currentUser = data;
-    //add user info to controller data
-    vm.currentUser = $localStorage.currentUser;
-  });
+  // $scope.$on('userLoggedIn', function(event, data){
+  //   //add user info to localStorage
+  //   $localStorage.currentUser = data;
+  //   //add user info to controller data
+  //   vm.currentUser = $localStorage.currentUser;
+  // });
 
   $scope.$on('userLoggedOut', function(event, data) {
     //remove userinfo from localStorage
     $localStorage.$reset();
     //remove user info from controller data
     vm.currentUser = null;
+    vm.daysTotal = '';
+    vm.dropOff = '';
+    vm.location = '';
+    vm.pickUp = '';
+    vm.reservationStarted = false;
+    vm.reservationComplete = false;
+    vm.showAccountNav = false;
+    vm.showProgressNav = true;
+    vm.vehicle = {};
+  });
+
+  $scope.$on('setUserData', function(event, data){
+    //add user info to localStorage
+    $localStorage.currentUser = data;
+    //add user info to controller data
+    vm.currentUser = $localStorage.currentUser;
+  });
+
+  $scope.$on('reservationComplete', function(event) {
+    vm.location = '';
+    vm.vehicle = {};
+
+    vm.reservationStarted = false;
+    vm.reservationComplete = false;
+    vm.total = $localStorage.total;
   });
 
   function getLocation(){
@@ -44,9 +72,9 @@ function MainController($scope, $state, $localStorage, vehicleService){
   }
 
   function getDates(){
-    $localStorage.pickup = $("#pick-up-date").val();
+    $localStorage.pickUp = $("#pick-up-date").val();
     $localStorage.dropOff = $("#return-date").val();
-    vm.pickUp = $localStorage.pickup;
+    vm.pickUp = $localStorage.pickUp;
     vm.dropOff = $localStorage.dropOff;
   }
 
@@ -86,29 +114,29 @@ function MainController($scope, $state, $localStorage, vehicleService){
         console.log(response);
         $localStorage.resultVehicles = response.data;
         console.log($localStorage.resultVehicles);
+        $localStorage.vehicle = {};
+        vm.vehicle = $localStorage.vehicle;
         $state.go('browse', {searchByLocation: $localStorage.location});
       });
   }
 
-  function displayNav(navName){
-    if (navName === 'account'){
-      $localStorage.showProgressNav = false;
-      vm.showMainNav = $localStorage.showProgressNav;
-      $localStorage.showAccountNav = true;
-      vm.showAccountNav = $localStorage.showAccountNav;
-    }else if (navName == 'main'){
-      $localStorage.showAccountNav = false;
-      vm.showMainNav = $localStorage.showAccountNav;
-      $localStorage.showProgressNav = true;
-      vm.showMainNav = $localStorage.showProgressNav;
+  function navBarSelectVehicle(){
+    if(vm.location){
+      $state.go('browse', {}, {reload: true});
     }else {
-      $localStorage.showProgressNav = false;
-      vm.showMainNav = $localStorage.showProgressNav;
-      $localStorage.showAccountNav = false;
-      vm.showMainNav = $localStorage.showAccountNav;
-      return true;
+      Materialize.toast('Must select location and rental date first', 4000)
     }
   }
+
+  function navBarSelectReview(){
+    if(vm.reservationStarted === true && vm.reservationComplete === false){
+      $state.go('review', {}, {reload: true});
+    }else {
+      Materialize.toast('Must select a vehicle first', 4000)
+    }
+  }
+
+
 
   function loadData(){
     vm.currentUser = $localStorage.currentUser;

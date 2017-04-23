@@ -8,6 +8,8 @@
       <input class="homebutton" type="submit" value="login">
     </form>
     <br>
+    <p ng-if="auth.showLoginError" class="loginErrMsg" loginErrMsg>Incorret email or password. Please try again</p>
+    <br>
     <p>Don't have an account? <a ui-sref="signup">Signup</a></p>
     </div>
   </div>

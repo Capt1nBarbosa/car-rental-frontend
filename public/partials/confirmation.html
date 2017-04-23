@@ -1,9 +1,34 @@
-<div class="row">
-  <div class="card s12">
-    <div class="card-contnet">
-      <h5>congratulations, you reservation is compete</h5>
-      <p>reservation stuff goes here </p>
-      <a ui-sref="home">back to home</a>
+<div class="container">
+  <div class="row">
+    <div class="card s12">
+      <div class="card-contnet center-align">
+        <p class="card-title">Your Reservation</p>
+        <div class="divider"></div>
+        <br>
+        <img ng-src="{{reservation.reservedVehicle.img}}" alt="{{registration.vehicle.model}}">
+        <br>
+        <p><b>pickUp</b></p>
+        <p>{{reservation.pickUp}}</p>
+        <p><b>dropOff</b></p>
+        <p>{{reservation.dropOff}}</p>
+        <p><b>PickUp Location</b></p>
+        <p>{{reservation.reservation.location}}</p>
+        <p><b>Vehicle</b></p>
+        <p>{{reservation.reservedVehicle.manufacturer}} {{reservation.reservedVehicle.model}}</p>
+        <p><b>Reservation Number</b></p>
+        <p>{{reservation.reservedVehicle.id}}</p>
+        <p></p>
+
+        <br>
+        <p>
+          <a ng-click="reservation.print()" ><i class="fa fa-print" aria-hidden="true"></i> print</a>
+        </p>
+        <br>
+        <b>
+          <a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i> back to home</a>
+        </b>
+
+      </div>
     </div>
   </div>
 </div>

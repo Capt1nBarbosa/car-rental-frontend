@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>car-rental-app</title>
+    <!-- animate css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <!-- materialize icons -->
@@ -22,26 +24,10 @@
             <li><a ng-if="!main.currentUser" ui-sref="login">login</a></li>
             <li><a ng-if="main.currentUser" ui-sref="account">Account Settings</a></li>
             <li><a ng-if="main.currentUser" ui-sref="reservations">My Reservations</a></li>
-            <!-- <li><a ng-if="main.currentUser" class="dropdown-button" href="#!" data-activates="dropdown-menu">Welcome {{main.currentUser.name}}<i class="material-icons right">arrow_drop_down</i></a></li> -->
             <li><a ng-if="main.currentUser" ng-click="auth.logout()">logout</a></li>
           </ul>
         </div>
       </nav>
-      <!-- dropdown menu -->
-      <!-- <ul id="dropdown-menu" class="dropdown-content">
-        <li>
-          <a ui-sref="account">
-            <ul>
-              <li><i id="user-icon" class="fa fa-user-circle fa-3x" aria-hidden="true"></i></li>
-              <li>{{main.currentUser.name}}</li>
-              <li>{{main.currentUser.email}}</li>
-            </ul>
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li><a ui-sref="account">Account settings</a></li>
-        <li><a ui-sref="reservations">My reservations</a></li>
-      </ul> -->
     </header>
 
     <main>
@@ -57,7 +43,7 @@
               </div>
             </div>
             <div class="progress-bar col s4">
-              <div ui-sref="browse" id="select-vehicle" class="progress-bar-content col s9">
+              <div ng-click="main.navBarSelectVehicle()" id="select-vehicle" class="progress-bar-content col s9">
                 <h6>2 Select a vehicle</h6>
               </div>
               <div class="col  s9">
@@ -65,11 +51,11 @@
               </div>
             </div>
             <div class="progress-bar col s4">
-              <div ui-sref="review" id="reserve" class="progress-bar-content col s9">
+              <div ng-click="main.navBarSelectReview()" id="reserve" class="progress-bar-content col s9">
                  <h6>3 Review and Reserve</h6>
               </div>
               <div class="col  s9">
-                <p class="center-text">counter will go here</p>
+                <!-- <p class="center-text">counter will go here</p> -->
               </div>
             </div>
           </div>
@@ -116,6 +102,10 @@
     <script src="/scripts/services/authTokenService.js"></script>
     <script src="/scripts/services/unitService.js"></script>
     <script src="/scripts/services/vehicleService.js"></script>
+    <script src="/scripts/services/reservationService.js"></script>
+    <script src="/scripts/services/userService.js"></script>
+    <!-- directives -->
+    <script src="/scripts/directives/loginErrMsg.js"></script>
     <!-- app -->
     <script src="/scripts/app.js"></script>
   </body>

@@ -8,8 +8,9 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, $windo
   vm.signup = signup;
   vm.login = login;
   vm.logout = logout;
-  // var server = 'http://localhost:3000';
-  var server = 'https://cryptic-basin-62047.herokuapp.com';
+  vm.showLoginError = false;
+  var server = 'http://localhost:3000';
+  // var server = 'https://cryptic-basin-62047.herokuapp.com';
 
   function signup(newUser) {
     console.log('hit signup method');
@@ -19,6 +20,9 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, $windo
         vm.newUser={};
         //login user after signup
         login({email: newUser.email, password: newUser.password});
+      })
+      .catch(function(error){
+        console.log(error);
       });
   }
 
@@ -26,42 +30,25 @@ function AuthController($http, $state, $scope, $rootScope, $localStorage, $windo
     $http.post(`${server}/users/login`, {user: user} )
       .then(function(response) {
         authTokenService.setToken(response.data.token);
-        $scope.$emit('userLoggedIn', response.data.user);
-        $scope.$emit('fetchData', response.data.user);
+        $scope.$emit('setUserData', response.data.user);
         if($localStorage.reservationStarted){
           $state.go('review');
         }else{
-          // NOTE: make this into reusable method to clean up code
-          // location.reload();
-          Materialize.updateTextFields();
-          Materialize.updateTextFields();
-          $('select').material_select();
-          $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year
-            format: 'mm-dd-yyyy', //date format
-            min: new Date(), //prevent being able to select a past date
-          });
-          $window.history.back();
+          $state.go('home');
+          // $window.history.back();
         }
-    });
+      })
+      .catch(function(error){
+        console.log(error);
+        vm.showLoginError = true;
+      });
   }
 
   function logout() {
     console.log('hit logout method');
     authTokenService.setToken();
-
     $scope.$emit('userLoggedOut');
-
     // location.reload();
-    Materialize.updateTextFields();
-    $('select').material_select();
-    $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year
-      format: 'mm-dd-yyyy', //date format
-      min: new Date(), //prevent being able to select a past date
-    });
     $state.go('home',{}, {reload: true});
   }
 

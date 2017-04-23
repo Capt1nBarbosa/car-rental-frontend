@@ -1,79 +1,38 @@
-<div class="row">
-  <div class="card col s12 z-depth-0">
-    <div class="row card-content">
-      <div id="account-nav" class="section col s12">
-        <h5>Manage Account</h5>
-        <div class="divider"></div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="section col s6">
-          <br>
-          <h6><b>Profile</b></h6>
-          <p>Your email is your username and is used to login</p>
+<div class="container" ng-controller="MainController as main">
+  <div class="row" ng-controller="AccountController as account">
+    <div class="card col s12 z-depth-0">
+      <div class="row card-content">
+        <div id="account-nav" class="section col s12">
+          <div class="" ng-show="account.displayInfo">
+            <ul class="collection with-header">
+               <li class="collection-header"><h4>Manage Account</h4></li>
+               <li class="collection-item"><b>First Name: </b>{{account.curUser.firstName}}</li>
+               <li class="collection-item"><b>Last Name: </b>{{account.curUser.lastName}}</li>
+               <li class="collection-item"><b>Email: </b>{{account.curUser.email}}</li>
+               <!-- <li class="collection-item"><b>Phone Number: </b>{{main.currentUser.phone}}</li>
+               <li class="collection-item"><b>Licence Number: </b>{{main.currentUser.license}}</li>
+               <li class="collection-item"><b>Street: </b>{{main.currentUser.street}}</li>
+                <li class="collection-item"><b>City: </b>{{main.currentUser.city}}</li>
+               <li class="collection-item"><b>Zipcode: </b>{{main.currentUser.zip}}</li> -->
+           </ul>
+            <input ng-click="account.displayEditForm('show')" type="button" value="edit">
+          </div>
+
+          <form id="account-edit-form"
+        ng-submit="account.edit(account.user, main.currentUser.id)">
+            <span><b>First Name</b></span><input type="text" ng-model="account.user.firstName" required>
+            <span><b>Last Name</b></span><input type="text" ng-model="account.user.lastName" required>
+            <span><b>Email</b></span><input type="email" ng-model="account.user.email" required>
+            <!-- <span><b>Phone Number</b></span><input type="text" ng-model="account.user.phone" required>
+            <span><b>Licence Number</b></span><input type="text" ng-model="account.user.license" required>
+            <span><b>Street</b></span><input type="text" ng-model="account.user.street" required>
+            <span><b>City</b></span><input type="text" ng-model="account.user.city" required>
+            <span><b>Zipcode</b></span><input type="text" ng-model="account.user.zip" required> -->
+            <input type="submit" value="submit">
+          <input ng-click="account.displayEditForm('hide')" type="button" name="" value="cancel">
+          </form>
         </div>
-        <div class="row section col s6">
-          <ul class="col s6">
-            <br>
-            <li><b>Name</b></li>
-            <br>
-            <li>
-              <div class="">
-                <p>{{main.currentUser.name}}<i class="fa fa-pencil" aria-hidden="true"></i></p>
-              </div>
-            </li>
-            <br>
-            <li><b>Email Address</b></li>
-            <br>
-            <li>
-              <div class="">
-                <p>{{main.currentUser.email}}<i class="fa fa-pencil" aria-hidden="true"></i></p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="row">
-        <div class="section col s6">
-          <br>
-          <h6><b>Password</b></h6>
-        </div>
-        <div class="row section col s6">
-          <br>
-          <ul class="col s6">
-            <li><b>Current Password</b></li>
-            <br>
-            <li>
-              <input type="text" name="" placeholder="enter your current password">
-            </li>
-            <br>
-            <li><b>New Password</b></li>
-            <br>
-            <li>
-              <input type="text" name="" placeholder="enter a new password">
-            </li>
-            <li>
-              <input type="text" name="" placeholder="enter the password">
-            </li>
-            <br>
-            <li>
-              <a class="waves-effect waves-light btn z-depth-0">Update Password</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="row">
-        <br>
-        <div class="section col s6">
-          <br>
-          <h6><b>Close Account</b></h6>
-        </div>
-        <div class="section col s6">
-          <br>
-          <a class="waves-effect waves-light btn  red darken-2 z-depth-0">Close Account</a>
-        </div>
+
       </div>
     </div>
   </div>

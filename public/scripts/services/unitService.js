@@ -1,21 +1,19 @@
-unitService.$inject = ['$http', '$state'];
+unitService.$inject = ['$http', '$state', '$localStorage'];
 
-function unitService($http, $state) {
-  // var server = 'http://localhost:3000';
-  var server = 'https://cryptic-basin-62047.herokuapp.com';
+function unitService($http, $state, $localStorage) {
+  var server = 'http://localhost:3000';
+  // var server = 'https://cryptic-basin-62047.herokuapp.com';
   return {
     update: update,
     checkAvailability: checkAvailability
   };
 
-  function update(unit, userId) {
+  function update(unit) {
     console.log(unit);
-    console.log(userId);
-    return $http.patch(`${server}/users/${userId}/units/${unit.id}`, unit)
+    return $http.patch(`${server}/users/${$localStorage.currentUser.id}/units/${unit.unit_id}`, unit )
       .then(function(response){
         console.log(response);
         return response.data;
-        $state.go('complete');
       })
       .catch(function(error){
         console.log(error);

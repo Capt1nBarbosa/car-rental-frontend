@@ -53,17 +53,9 @@
         </p>
         <br>
         <p>
-          <input ng-click="reservation.make(main.vehicle.id, main.location)" type="button" name="" value="reserve">
+          <input ng-click="reservation.make(main.vehicle, main.location)" type="button" name="" value="reserve">
         </p>
       </div>
-    </div>
-  </div>
-</div>
-<div ng-if="main.reservationComplete" class="row">
-  <div class="card col s8 offset-s2">
-    <div class="card-content">
-      <h5>Reservation complate</h5>
-      <p>reservation details go here</p>
     </div>
   </div>
 </div>

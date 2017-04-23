@@ -21,7 +21,8 @@ function router($stateProvider, $urlRouterProvider){
  })
  .state('reservations', {
    url: '/reservations',
-   templateUrl: '/partials/reservations.html'
+   templateUrl: '/partials/reservations.html',
+   controller:'ReservationController as reservation'
  })
  .state('review', {
    url: '/review',
@@ -30,12 +31,12 @@ function router($stateProvider, $urlRouterProvider){
  })
  .state('account', {
    url: '/user/account',
-   templateUrl: '/partials/account.html',
-   controller: 'UserController as user'
+   templateUrl: '/partials/account.html'
  })
  .state('confiramtion', {
    url: '/confiramtion',
-   templateUrl: '/partials/confirmation.html'
+   templateUrl: '/partials/confirmation.html',
+   controller: 'ReservationController as reservation'
  })
  .state('signup', {
    url: '/signup',
