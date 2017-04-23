@@ -12,7 +12,7 @@ function userService($http, $localStorage){
     remove: remove
   }
 
-  return service;
+  return service; //testing
 
 
   function add(newUser){
